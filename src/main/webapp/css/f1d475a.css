@@ -1,0 +1,52 @@
+.whiteSection {
+    padding: 40px 0 0 0;
+}
+
+.whiteSection25 {
+    padding: 25px 0 0 0;
+}
+
+.whiteSection:last-child {
+    margin-bottom: 40px;
+}
+
+.whiteSection .isotopeSelector figure {
+    margin-bottom: 0px !important;
+}
+
+.whiteSection .marginExten .more {
+    float: right;
+}
+
+.whiteSection .marginExten .more .buttonCustomPrimary{
+    height: 30px !important;
+    line-height: 30px !important;
+    padding: 0 10px;
+    margin-top: 20px;
+    margin-right: 10px;
+}
+
+.promotionWrapper {
+    margin-top: 40px;
+}
+
+.sectionNewTitle {
+    margin-bottom: 15px;
+    padding: 0 9px;
+}
+
+.sectionNewTitle h2 span {
+    font-size: 26px;
+    z-index: 5;
+    position: relative;
+    background-color: #ffffff;
+}
+
+.country-destination {
+    margin-bottom: 0 !important;
+}
+
+.buttonCustomPrimary {
+    height: 40px !important;
+    line-height: 40px !important;
+}
