@@ -363,9 +363,21 @@
                             <i class="fas fa-shopping-cart"></i>
                             Thêm vào giỏ hàng
                         </button>
-                        <button class="btn btn-share-tour"
-                                onclick="shareTour('<%= request.getContextPath()%>/booking?action=viewTour&id=<%= tour.getId()%>')">Chia
-                            sẻ Tour</button>
+                            <%
+                             String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+                   + request.getContextPath() + "/booking?action=viewTour&id=" + tour.getId();
+                            %>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=<%=url%>" target="_blank">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/2023_Facebook_icon.svg/120px-2023_Facebook_icon.svg.png" style="width: 50px" alt="Share on Facebook" />
+                            </a>
+
+<!-- Nút Zalo (mobile only) -->
+                            <a href="https://zalo.me/share?url=<%=url%>" target="_blank">
+                               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Icon_of_Zalo.svg/75px-Icon_of_Zalo.svg.png"style="width: 50px" alt="Share on Zalo" />
+</a>
+<!--                        <button class="btn btn-share-tour"
+                                onclick="shareTour('')">Chia
+                            sẻ Tour</button>-->
                     </div>
                     <% } else { %>
                     <p class="error-message">Không tìm thấy tour

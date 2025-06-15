@@ -21,11 +21,11 @@ public class DBContext {
     // Public database connection object
     public Connection conn; // Constant for database connection URL (localhost, port 1433,
     // TourManagement_GR5 database, no encryption, with charset settings)
-    private final String DB_URL = "jdbc:sqlserver://127.0.0.1:1433;databaseName=TourManagement_GR5_Tour;encrypt=false;characterEncoding=UTF-8";
+    private final String DB_URL = "jdbc:sqlserver://localhost:1433;databaseName=TourManagement_GR5_Tour;encrypt=false;characterEncoding=UTF-8";
     // Constant for database username
     private final String DB_USER = "sa";
     // Constant for database password
-    private final String DB_PWD = "123";
+    private final String DB_PWD = "123456";
 
     // Constructor for the DBContext class
     public DBContext() {
