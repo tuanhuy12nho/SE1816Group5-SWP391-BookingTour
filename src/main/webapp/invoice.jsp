@@ -1,5 +1,6 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="model.Booking" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <% Booking booking = (Booking) request.getAttribute("booking");%>
 <!DOCTYPE html>
 <html>
@@ -138,13 +139,25 @@
                 <!-- Link to return to the home page -->
                 <a href="<%= request.getContextPath()%>/SortTour" class="btn btn-custom btn-secondary">Back to Home</a>
                 <!-- Form to cancel the tour booking -->
-                <form action="<%= request.getContextPath()%>/ViewBookings" method="post" class="d-inline">
+                <form id="cancelForm" action="<%= request.getContextPath()%>/ViewBookings" method="post" class="d-inline">
                     <!-- Hidden input to specify the action as 'cancel' -->
                     <input type="hidden" name="action" value="cancel">
                     <!-- Hidden input to pass the booking ID -->
                     <input type="hidden" name="bookingId" value="${booking.id}">
                     <!-- Button to submit the cancellation request -->
-                    <button type="submit" class="btn btn-custom btn-danger">Cancel Tour</button>
+                    <c:choose>
+                        <c:when test="${booking.status eq 'Confirmed' || booking.status eq 'Cancelled'}">
+                            <button type="button" class="btn btn-custom btn-secondary" disabled>
+                                <c:choose>
+                                    <c:when test="${booking.status eq 'Confirmed'}">Đã xác nhận</c:when>
+                                    <c:when test="${booking.status eq 'Cancelled'}">Đã hủy</c:when>
+                                </c:choose>
+                            </button>
+                        </c:when>
+                        <c:otherwise>
+                            <button type="button" onclick="confirmCancel(${booking.id})" class="btn btn-custom btn-danger">Cancel Tour</button>
+                        </c:otherwise>
+                    </c:choose>
                 </form>
                 <!-- Link to print the invoice -->
                 <a href="<%= request.getContextPath()%>/printInvoice.jsp?bookingId=${booking.id}" 
@@ -162,9 +175,19 @@
         <script>
             const infoItems = document.querySelectorAll('.info-item');
             infoItems.forEach(item => {
-            item.addEventListener('mouseover', () => {
-            item.style.backgroundColor = '#f1f3f5';
+                item.addEventListener('mouseover', () => {
+                    item.style.backgroundColor = '#f1f3f5';
+                });
+                item.addEventListener('mouseout', () => {
+                    item.style.backgroundColor = '';
+                });
+            });
 
+            function confirmCancel(bookingId) {
+                if (confirm('Bạn có chắc chắn muốn hủy tour này?')) {
+                    document.getElementById('cancelForm').submit();
+                }
+            }
         </script>
         <%@include file="/WEB-INF/inclu/footer.jsp" %>
     </body>
