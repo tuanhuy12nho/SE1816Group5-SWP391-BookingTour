@@ -27,7 +27,7 @@ public class ReviewDAO extends DBContext {
         // SQL query to fetch reviews for a tour by joining Review and User tables
         String sql = "SELECT r.id, r.userId, r.tourId, r.rating, r.comment, r.reviewDate, u.username "
                 + "FROM Review r JOIN [User] u ON r.userId = u.id "
-                + "WHERE r.tourId = ?";
+                + "WHERE r.tourId = ? and status != 'hidden'";
 
         // Use try-with-resources to automatically close database resources
         try ( Connection conn = getConnection(); // Establish database connection
@@ -61,7 +61,7 @@ public class ReviewDAO extends DBContext {
     // Method to add a new review to the database
     public void addReview(Review review) {
         // SQL query to insert a new review into the Review table
-        String sql = "INSERT INTO Review (userId, tourId, rating, comment, reviewDate) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Review (userId, tourId, rating, comment, reviewDate, status) VALUES (?, ?, ?, ?, ?, ?)";
 
         // Use try-with-resources to automatically close database resources
         try ( Connection conn = getConnection(); // Establish database connection
@@ -72,7 +72,7 @@ public class ReviewDAO extends DBContext {
             stmt.setInt(3, review.getRating());      // Rating
             stmt.setString(4, review.getComment());  // Comment
             stmt.setString(5, review.getReviewDate());  // Review date
-
+            stmt.setString(6, "show");
             // Execute the insert query
             stmt.executeUpdate();
         } catch (SQLException e) {
@@ -132,7 +132,7 @@ public class ReviewDAO extends DBContext {
         StringBuilder sql = new StringBuilder(
                 "SELECT r.*, u.username FROM Review r "
                 + "JOIN [User] u ON r.userId = u.id "
-                + "WHERE r.tourId = ? AND r.comment LIKE '%" + commentKeyword + "%' AND u.username LIKE '%" + userKeyword + "%' "
+                + "WHERE r.tourId = ? AND r.comment LIKE '%" + commentKeyword + "%' AND u.username LIKE '%" + userKeyword + "%'"
         );
 
         switch (sortType) {

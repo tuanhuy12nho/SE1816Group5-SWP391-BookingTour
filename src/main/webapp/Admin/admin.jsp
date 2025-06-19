@@ -161,8 +161,7 @@
         </style>
     </head>
     <body>
-        <!-- Sidebar -->
-        <div class="sidebar">
+       <div class="sidebar">
             <h3>Admin Panel</h3>
 
             <div class="menu-item">
@@ -181,6 +180,11 @@
             <div class="menu-item">
                 <a href="<%= request.getContextPath()%>/adminTour?filter=&sort=priceAsc" class="<%= request.getRequestURI().contains("adminTour") ? "active" : ""%>">
                     <i class="fas fa-map-marked-alt"></i> Danh sách Tour
+                </a>
+            </div>
+            <div class="menu-item">
+                <a href="<%= request.getContextPath()%>/discountManage" class="<%= request.getRequestURI().contains("discountManage") ? "active" : ""%>">
+                    <i class="fa-solid fa-ticket"></i> Danh sách Voucher
                 </a>
             </div>
                     

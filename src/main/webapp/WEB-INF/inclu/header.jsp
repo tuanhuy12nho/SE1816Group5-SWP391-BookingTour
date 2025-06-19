@@ -424,6 +424,9 @@
                                         <a href="<%= request.getContextPath()%>/cart" class="cart-icon">
                                             <i class="fa fa-shopping-cart" aria-hidden="true"></i> Giỏ hàng
                                         </a>
+                                         <a href="<%= request.getContextPath()%>/discountSaveController" class="cart-icon">
+                                            voucher
+                                        </a>
                                         <a href="<%= request.getContextPath()%>/logout"><i class="fa fa-sign-out"
                                                 aria-hidden="true"></i> Đăng xuất</a>
                                     </c:when>

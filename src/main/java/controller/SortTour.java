@@ -4,6 +4,7 @@
  */
 package controller;
 
+import DAO.DiscountDAO;
 import DAO.TourDAO;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -153,7 +154,10 @@ public class SortTour extends HttpServlet {
         request.setAttribute("totalPages", totalPages); // Total number of pages
         request.setAttribute("filter", filter); // Current filter value
         request.setAttribute("sort", sort); // Current sort order
-
+        
+        //THANG DISCOUNT
+        DiscountDAO disDao = new DiscountDAO();
+        request.setAttribute("voucherList", disDao.getTopDiscount());
         // Forward the request to List.jsp to display the sorted and filtered tours
         request.getRequestDispatcher("List.jsp").forward(request, response);
     }

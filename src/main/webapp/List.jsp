@@ -316,6 +316,8 @@
                 });
             }
         </script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
     </head>
 
     <body>
@@ -390,13 +392,20 @@
         <div class="voucher-container">
             <c:forEach var="discount" items="${voucherList}">
                 <div class="voucher-card">
-                    <button class="copy-btn" onclick="copyToClipboard('${discount.getCode()}', this)">📋</button>
+                    <button class="copy-btn" onclick="copyToClipboard('${discount.code}', this)">📋</button>
                     <div class="voucher-code">Voucher</div>
-                    <div class="voucher-desc">${discount.getDescription()}</div>
-                    <div class="voucher-percent">Giảm ${discount.getDiscount_percent()}%</div>
+                    <div class="voucher-desc">${discount.description}</div>
+                    <div class="voucher-percent">Giảm ${discount.discount_percent}%</div>
+
+                    <!-- Nút lưu voucher bằng JS -->
+                    <button class="btn btn-success save-btn"
+                            data-discount-id="${discount.id}">
+                        Lưu voucher
+                    </button>
                 </div>
             </c:forEach>
         </div>
+
 
         <!-- Section for Featured Tours -->
         <section class="featured-tours">
@@ -590,9 +599,50 @@
                 <% } %>
                 <% }%>
             </div>
-
         </div>
+        <div id="alertMessage" style="text-align:center; font-weight:bold; margin-bottom:20px;"></div>
     </body>
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".save-btn").forEach(button => {
+        button.addEventListener("click", async () => {
+            const discountId = button.getAttribute("data-discount-id");
+
+            try {
+                const res = await fetch("discountSaveController", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    body: `discountId=`+discountId+"&action=save"
+                });
+
+                if (res.status === 200) {
+                    alert("✅ Lưu voucher thành công!");
+                } else if (res.status === 409) {
+                  alert("⚠️ Voucher này đã được lưu trước đó")
+                } else {
+                    showAlert("❌ Lưu voucher thất bại.", 'red');
+                }
+            } catch (err) {
+                console.error("Lỗi:", err);
+                showAlert("❌ Lỗi hệ thống khi lưu voucher.", 'red');
+            }
+        });
+    });
+
+    function showAlert(message, color) {
+        const alertDiv = document.getElementById("alertMessage");
+        alertDiv.textContent = message;
+        alertDiv.style.color = color;
+        setTimeout(() => alertDiv.textContent = "", 3000);
+    }
+});
+
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
     <%@include file="/WEB-INF/inclu/footer.jsp" %>
     <!-- JavaScript from header.jsp -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
