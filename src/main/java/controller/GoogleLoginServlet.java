@@ -30,8 +30,8 @@ import org.json.JSONObject;
 @WebServlet(name = "GoogleLoginServlet", urlPatterns = { "/google-login" })
 public class GoogleLoginServlet extends HttpServlet {
 
-    private static final String CLIENT_ID = "984198030178-ehvd77c47vad0nb2oms94j22bikjp4tc.apps.googleusercontent.com";
-    private static final String CLIENT_SECRET = "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";
+    private static final String CLIENT_ID = "";
+    private static final String CLIENT_SECRET = "";
     private static final String REDIRECT_URI = "http://localhost:8080/Assigment/google-login";
     private static final String SCOPE = "profile email";
 
