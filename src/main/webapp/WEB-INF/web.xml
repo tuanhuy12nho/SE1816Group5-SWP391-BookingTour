@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="5.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd">
+    
+    <display-name>BookingTour</display-name>
+    
+    <!-- VnPay Payment Servlet -->
+    <servlet>
+        <servlet-name>VnPayPaymentServlet</servlet-name>
+        <servlet-class>controller.VnPayPaymentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>VnPayPaymentServlet</servlet-name>
+        <url-pattern>/vnpay</url-pattern>
+    </servlet-mapping>
+    
+    <!-- VnPay Return Servlet -->
+    <servlet>
+        <servlet-name>VnPayReturnServlet</servlet-name>
+        <servlet-class>controller.VnPayReturnServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>VnPayReturnServlet</servlet-name>
+        <url-pattern>/vnpay-return</url-pattern>
+    </servlet-mapping>
+    
+    <!-- VnPay Common Servlets -->
+    <servlet>
+        <servlet-name>ajaxServlet</servlet-name>
+        <servlet-class>common.ajaxServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ajaxServlet</servlet-name>
+        <url-pattern>/vnpayajax</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>vnpayQuery</servlet-name>
+        <servlet-class>common.vnpayQuery</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>vnpayQuery</servlet-name>
+        <url-pattern>/vnpayquery</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>vnpayRefund</servlet-name>
+        <servlet-class>common.vnpayRefund</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>vnpayRefund</servlet-name>
+        <url-pattern>/vnpayrefund</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Checkout Servlet -->
+    <servlet>
+        <servlet-name>CheckoutServlet</servlet-name>
+        <servlet-class>controller.CheckoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CheckoutServlet</servlet-name>
+        <url-pattern>/checkout</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Admin Dashboard Servlet -->
+    <servlet>
+        <servlet-name>AdminDashboardServlet</servlet-name>
+        <servlet-class>controller.AdminDashboardServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminDashboardServlet</servlet-name>
+        <url-pattern>/admin-dashboard</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Session Configuration -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+    
+    <!-- Welcome File List -->
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+    
+    <!-- Character Encoding Filter -->
+    <filter>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+</web-app> 

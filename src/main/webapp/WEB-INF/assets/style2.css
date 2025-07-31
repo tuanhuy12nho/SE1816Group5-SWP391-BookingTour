@@ -1,0 +1,201 @@
+
+.trip-info {
+    border: 2px solid rgba(0, 0, 0, 0.247); /* Viền đen 2px */
+    border-radius: 10px; /* Bo góc */
+    padding: 20px;
+    margin: 5px;
+    width: fit-content; /* Giới hạn theo nội dung bên trong */
+    position: relative;
+}
+
+.container {
+    display: flex;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px;
+}
+
+.image {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.image img {
+    max-width: 100%;
+    border-radius: 6px;
+    max-height: 100%
+}
+
+.details {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #0056b3;
+    margin-bottom: 10px;
+}
+
+.location {
+    font-size: 16px;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.info {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 20px;
+    color: #ff6600;
+    background-color: #ffeb3b;
+    padding: 10px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.date-container {
+    display: flex;
+    gap: 10px;
+}
+
+.date-container button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.date-container button:hover {
+    background-color: #0056b3;
+}
+.trip-info {
+    display: flex; /* Sử dụng flexbox */
+    align-items: flex-start; /* Căn các phần tử theo hàng trên */
+    gap: 20px; /* Khoảng cách giữa các phần */
+    width: 100%;
+}
+
+.trip-image {
+    width: 30%; /* Chiếm 30% */
+    position: relative;
+}
+
+.trip-image img {
+    width: 100%;
+    border-radius: 10px; /* Bo góc ảnh */
+}
+
+.trip-image .logo {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.trip-details {
+    width: 70%; /* Chiếm 70% */
+}
+
+.price-date {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.dates button {
+    margin: 5px;
+    padding: 8px 15px;
+    border: none;
+    background-color: #ffb433;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.dates button:hover {
+    background-color: #ffb433;
+}
+.trip-details h1{
+    color: rgb(0, 123, 255);
+}
+.trip-details h1 a {
+    text-decoration: none; /* Xóa dấu gạch chân */
+    color: inherit; /* Giữ nguyên màu chữ của thẻ h1 */
+}
+.book-now {
+    position: absolute;
+    bottom: 10px;
+    right: 50px;
+}
+
+.book-btn {
+    display: inline-block;
+    background-color: #33b1ff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.book-btn:hover {
+    background-color: #33b1ff;
+}
+ /* Định dạng container chứa các nút */
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Định dạng chung cho các nút */
+button {
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Màu cho từng loại nút */
+button:hover {
+    opacity: 0.8;
+}
+
+
+button:nth-child(4) { background-color: white ; color: black; } /* Reset */
+
+/* Ô nhập tìm kiếm */
+#searchInput {
+    padding: 10px;
+    font-size: 16px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Định dạng cho input khi focus */
+#searchInput:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+
+

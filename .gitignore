@@ -1,0 +1,56 @@
+# ===================
+# Java/Maven ignores
+# ===================
+target/
+*.class
+*.jar
+*.war
+*.ear
+
+# ===================
+# IDE specific
+# ===================
+# IntelliJ
+.idea/
+*.iml
+*.iws
+out/
+
+# Eclipse
+.project
+.classpath
+.settings/
+bin/
+
+# NetBeans
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# VS Code
+.vscode/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# ===================
+# Environment/Secrets
+# ===================
+.env
+*.env
+*.key
+*.pem
+*.crt
+*.jks
+
+# Logs & temp
+*.log
+*.tmp
+*.bak
+
+# Git files
+*.orig
